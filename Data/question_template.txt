@@ -1,0 +1,71 @@
+--Stage 1:
+
+## IR-Strucutre
+
+Q17: Could the molecule with the IR spectrum potentially contain an ['Alkyl','Alcohol','Phenol','Ketone','Acid','Aldehyde','Ester','Nitrile','Isocyanate','Amine','Ether','Sulfide','Halide','Alkyne']?
+A17:['Alkyl','Alcohol','Phenol','Ketone','Acid','Aldehyde','Ester','Nitrile','Isocyanate','Amine','Ether','Sulfide','Halide','Alkyne']
+
+## MS-Structure
+
+Q31: Could the molecule with the MS spectrum potentially contain an ['Alkyl','Alcohol','Phenol','Ketone','Aldehyde', 'Nitric oxide', 'Acetaldehyde', 'Benzyl', 'Iodine', 'Ethyl', 'Hydroxymethyl', 'Nitro', 'Benzene', 'Benzaldehyde'] ?
+A31: ['Alkyl','Alcohol','Phenol','Ketone','Aldehyde', 'Nitric oxide', 'Acetaldehyde', 'Benzyl', 'Iodine', 'Ethyl', 'Hydroxymethyl', 'Nitro', 'Benzene', 'Benzaldehyde']
+
+--Stage 2: 
+
+## IR-Strucutre
+
+Q17: Examine the IR spectrum to determine if the molecule could potentially contain specific functional groups ['Alkyl','Alcohol','Phenol','Ketone','Acid','Aldehyde','Ester','Nitrile','Isocyanate','Amine','Ether','Sulfide','Halide','Alkyne']? Look for the presence of characteristic absorption bands and analyze the wavenumbers and intensities of these peaks. This analysis will help identify the functional groups and key structural features within the molecule.
+A17:['Alkyl','Alcohol','Phenol','Ketone','Acid','Aldehyde','Ester','Nitrile','Isocyanate','Amine','Ether','Sulfide','Halide','Alkyne']
+
+Q31: Does the IR spectrum contains broad absorption peak of O-H stretching around 3300 cm⁻1?
+A31: ['O-H Stretching']
+
+Q32: Does the IR spectrum contains sharp absorption peak of Alkyl stretching around 2900 cm⁻1?
+A32: ['Alkyl']
+
+Q33: Does the IR spectrum contains strong, sharp peak of C=O stretching around 1700 cm⁻¹?
+A33: ['C=O Stretching']
+
+Q34: Does the IR spectrum contain a broad peak for N-H stretching around 3200-3600 cm⁻¹?
+A34: ['N-H Stretching']
+
+Q35: Does the IR spectrum contain a weak band for triple bond C-H stretching in the 2260-2100 cm⁻¹ range?
+A35: ['triple bond C-H Stretching']
+
+## MS-Structure
+
+Q36: Examine the MS spectrum to determine if the molecule could potentially contain specific fragments ['Alkyl','Alcohol','Phenol','Ketone','Aldehyde', 'Nitric oxide', 'Acetaldehyde', 'Benzyl', 'Iodine', 'Ethyl', 'Hydroxymethyl', 'Nitro', 'Benzene', 'Benzaldehyde']. Look into the number of fragments observed and analyze the differences between the larger fragments. This analysis will help identify the presence of key structural features within the molecule?
+A31: ['Alkyl','Alcohol','Phenol','Ketone','Aldehyde', 'Nitric oxide', 'Acetaldehyde', 'Benzyl', 'Iodine', 'Ethyl', 'Hydroxymethyl', 'Nitro', 'Benzene', 'Benzaldehyde']
+
+Stage 3:
+
+##NMR:
+
+1. Generate the number of different types of hydrogen atoms present in the molecule based on given ['H_NMR']:  Only output the number.
+
+2. Determine the number of different types of carbon atoms present in the molecule based on given ['C_NMR']: Only output the number.
+
+3. Determine the number of CH3 groups present in the molecule based on given ['H_NMR']:  Only output the number.
+
+4. Determine the number of CH2 groups present in the molecule based on given ['H_NMR']: Only output the number.
+
+5. Determine the number of CH groups present in the molecule based on given ['H_NMR']: Only output the number.
+
+##Molecule Construction:
+
+1. Selected one fragment from the list of SMILES for the Initial structure for molecular construction:
+Indentify one specific fragment from the pool of fragments provided: {'Fragments'} ensuring it's consistent with both ['C13-NMR'] and ['H-NMR'], if the original format is not SMILES convert it to SMILES format
+Only return (format 'SMIELS') 
+Output:
+
+2.  Select one fragment from the provided list of molecular fragment pool {'Fragments'} to construct the target molecule based on remaining chemical formula. The selected fragment should not exceed the number of main atoms shown in the remaining chemical formula {'remaining formula'}. The degree of unsaturation of the remaining part is given:{} for reference. There may be atoms left in the middle step.\n (Add any single atom present in the chemical formula that is not included in any fragments.)
+Only return (format 'SMIELS') 
+
+3. Select the molecule from the list of molecular candidates with simulated NMR spectra that has the highest number of matching peaks with the target ['C-NMR spectrum'] and ['H-NMR spectra'].
+ Compare the simulated NMR data for each candidate with the target NMR data. Ensure the peaks in the candidate NMR have no more than 2 significant discrepancies compared to the peaks in the target NMR.
+    If no matched molecule is found, ring rearrangements and single double bond adjustment on the SMILES are allowed but providing one SMILES is required.
+    
+Molecular candidates: 
+
+
+
