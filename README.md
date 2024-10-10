@@ -2,6 +2,7 @@
 
 
 <img src="https://github.com/KehanGuo2/MolPuzzle/blob/main/image/MolPuzzle_logo.png" width="100%">
+
 # Can LLMs Solve Molecule Puzzles? A Multimodal Benchmark for Molecular Structure Elucidation
 
 
