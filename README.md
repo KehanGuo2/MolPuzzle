@@ -11,7 +11,7 @@
 [![Dataset](https://img.shields.io/badge/Dataset-%F0%9F%92%BE-green?style=for-the-badge&logoWidth=40)](https://github.com/KehanGuo2/MolPuzzle/edit/main/README.md)
 
 ## 🙋 **About MolePuzzle**
-We present MolPuzzle, a benchmark comprising **234** instances of structure elucidation, which feature over **18,000 QA samples** presented in a sequential puzzle-solving process, involving three interlinked subtasks: **molecule understanding**, **spectrum interpretation**, and **molecule construction**.
+We introduce a new challenge: molecular structure elucidation, which involves deducing a molecule’s structure from various types of spectral data. Solving such a molecular puzzle, akin to solving crossword puzzles, poses reasoning challenges that require integrating clues from diverse sources and engaging in iterative hypothesis testing. To address this challenging problem with LLMs, we present \textbf{MolPuzzle}, a benchmark comprising 234 instances of structure elucidation, which feature over 18,000 QA samples presented in a sequential puzzle-solving process, involving three interlinked sub-tasks: molecule understanding, spectrum interpretation, and molecule construction.
 
 <div align="center">
 <img width="530" alt="Screenshot 2024-07-11 at 17 58 31" src="https://github.com/user-attachments/assets/bbf3fae0-aa8f-4cd5-a274-55a1e42285e9">
