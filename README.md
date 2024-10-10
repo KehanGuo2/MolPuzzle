@@ -1,5 +1,3 @@
-# MolPuzzle: Can LLMs Solve Molecule Puzzles? A Multimodal Benchmark for Molecular Structure Elucidation
-
 <div align="center">
 
 
