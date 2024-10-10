@@ -9,18 +9,31 @@
 [![Website](https://img.shields.io/badge/Website-%F0%9F%8C%8D-blue?style=for-the-badge&logoWidth=40)](https://github.com/KehanGuo2/MolPuzzle/edit/main/README.md)
 [![Paper](https://img.shields.io/badge/Paper-%F0%9F%8E%93-lightgrey?style=for-the-badge&logoWidth=40)](https://github.com/KehanGuo2/MolPuzzle/edit/main/README.md)
 [![Dataset](https://img.shields.io/badge/Dataset-%F0%9F%92%BE-green?style=for-the-badge&logoWidth=40)](https://github.com/KehanGuo2/MolPuzzle/edit/main/README.md)
+</div>
+
+<div align="center">
+
+
+
+
+</div>
+
+
+## Updates & News
+- [09/29/2024] 🥂 **MolePuzze has been accepted by NeurIPS 2024 Datasets and Benchmarks Track as a spotlight.! See you in Vancouver!**
 
 ## 🙋 **About MolePuzzle**
 We introduce a new challenge: molecular structure elucidation, which involves deducing a molecule’s structure from various types of spectral data. Solving such a molecular puzzle, akin to solving crossword puzzles, poses reasoning challenges that require integrating clues from diverse sources and engaging in iterative hypothesis testing. To address this challenging problem with LLMs, we present **MolPuzzle**, a benchmark comprising 234 instances of structure elucidation, which feature over 18,000 QA samples presented in a sequential puzzle-solving process, involving three interlinked sub-tasks: **molecule understanding**, **spectrum interpretation**, and **molecule construction**.
 
+
 <div align="center">
-<img width="530" alt="Screenshot 2024-07-11 at 17 58 31" src="https://github.com/user-attachments/assets/bbf3fae0-aa8f-4cd5-a274-55a1e42285e9">
+<img width="700" alt="Screenshot 2024-07-11 at 17 58 31" src="https://github.com/user-attachments/assets/bbf3fae0-aa8f-4cd5-a274-55a1e42285e9">
 </div>
 
 The figure illustrates the problem of molecular structure elucidation alongside its analogical counterpart, the crossword puzzle, highlighting the parallels in strategy and complexity between these two intellectual challenges
 
 
-# 📖Dataset Usage 
+## 📖 **Dataset Usage**
 <img width="746" alt="Screenshot 2024-07-11 at 18 19 17" src="https://github.com/user-attachments/assets/1253bda0-c894-47f1-ae35-93864377afbf">
 
 
