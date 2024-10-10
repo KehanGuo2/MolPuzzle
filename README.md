@@ -1,5 +1,10 @@
 # MolPuzzle: Can LLMs Solve Molecule Puzzles? A Multimodal Benchmark for Molecular Structure Elucidation
 
+<div align="center">
+
+
+<img src="./MolPuzzle/image/MolPuzzle_logo.png" width="100%">
+
 We present MolPuzzle, a benchmark comprising **234** instances of structure elucidation, which feature over **18,000 QA samples** presented in a sequential puzzle-solving process, involving three interlinked subtasks: **molecule understanding**, **spectrum interpretation**, and **molecule construction**.
 
 <img width="530" alt="Screenshot 2024-07-11 at 17 58 31" src="https://github.com/user-attachments/assets/bbf3fae0-aa8f-4cd5-a274-55a1e42285e9">
