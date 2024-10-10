@@ -3,7 +3,7 @@
 <div align="center">
 
 
-<img src="/MolPuzzle/image/MolPuzzle_logo.png" width="100%">
+<img src="/Users/kehanguo/PycharmProjects/MolPuzzle/image/MolPuzzle_logo.png" width="100%">
 
 We present MolPuzzle, a benchmark comprising **234** instances of structure elucidation, which feature over **18,000 QA samples** presented in a sequential puzzle-solving process, involving three interlinked subtasks: **molecule understanding**, **spectrum interpretation**, and **molecule construction**.
 
