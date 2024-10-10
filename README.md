@@ -37,6 +37,8 @@ The figure illustrates the problem of molecular structure elucidation alongside 
 <img width="746" alt="Screenshot 2024-07-11 at 18 19 17" src="https://github.com/user-attachments/assets/1253bda0-c894-47f1-ae35-93864377afbf">
 
 
+## 🧹 **Before Evaluation**
+### **Installation**
 
 ## Data source
 The initial molecules were selected by referencing the textbook Organic Structures from Spectra, 4th Edition, available as an online PDF on ResearchGate. We chose 234 molecules based on spectrum tasks involving IR, MS, 1H-NMR, and 13C-NMR to reflect a difficulty level suitable for graduate students. To address copyright concerns, we excluded molecules with publicly available mass spectrometry (MS) spectra in open-source databases from our study. The remaining spectra were sourced from public resources, notably the PubChem database. For additional spectra that were unavailable, we used simulation methods and provided a Jupyter notebook to generate these data, ensuring high-quality spectra for analysis. 
