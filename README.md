@@ -15,11 +15,11 @@ We present MolPuzzle, a benchmark comprising **234** instances of structure eluc
 
 The figure illustrates the problem of molecular structure elucidation alongside its analogical counterpart, the crossword puzzle, highlighting the parallels in strategy and complexity between these two intellectual challenges
 
-# 🔥 News
+## 🔥 News
 - 2024.09: 🎉🎉 MolPuzzle has been accepted by NeurIPS 2024 Dataset and Benchmark Track as a spotlight!
 
 
-# 📊Model Summary
+## 📊Model Summary
 
 | Model                | Stage 1 | Stage 2 | Stage 3 |
 |:---------------------|:--------|:--------|:--------|
@@ -40,12 +40,10 @@ The figure illustrates the problem of molecular structure elucidation alongside 
 
 
 
-# 📊Dataset Usage 
+## 📊Dataset Statistics
 <img width="746" alt="Screenshot 2024-07-11 at 18 19 17" src="https://github.com/user-attachments/assets/1253bda0-c894-47f1-ae35-93864377afbf">
 
 
-
-## Data source
 The initial molecules were selected by referencing the textbook Organic Structures from Spectra, 4th Edition, available as an online PDF on ResearchGate. We chose 234 molecules based on spectrum tasks involving IR, MS, 1H-NMR, and 13C-NMR to reflect a difficulty level suitable for graduate students. To address copyright concerns, we excluded molecules with publicly available mass spectrometry (MS) spectra in open-source databases from our study. The remaining spectra were sourced from public resources, notably the PubChem database. For additional spectra that were unavailable, we used simulation methods and provided a Jupyter notebook to generate these data, ensuring high-quality spectra for analysis. 
 
 You can download the dataset at [data](https://github.com/KehanGuo2/MolPuzzle/tree/main/Data)
@@ -55,4 +53,4 @@ You can download the dataset at [data](https://github.com/KehanGuo2/MolPuzzle/tr
 We offer demo examples for tasks in each Stage, the notebook can be found here [Demos](https://github.com/KehanGuo2/MolPuzzle/tree/main/demos)
 
 
-# 🤗 Contact us
+## 🤗 Contact us
