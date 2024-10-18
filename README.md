@@ -10,8 +10,9 @@
 
 We present MolPuzzle, a benchmark comprising **234** instances of structure elucidation, which feature over **18,000 QA samples** presented in a sequential puzzle-solving process, involving three interlinked subtasks: **molecule understanding**, **spectrum interpretation**, and **molecule construction**.
 
+<div align="center">
 <img width="530" alt="Screenshot 2024-07-11 at 17 58 31" src="https://github.com/user-attachments/assets/bbf3fae0-aa8f-4cd5-a274-55a1e42285e9">
-
+</div>
 
 The figure illustrates the problem of molecular structure elucidation alongside its analogical counterpart, the crossword puzzle, highlighting the parallels in strategy and complexity between these two intellectual challenges
 
