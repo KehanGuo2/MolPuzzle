@@ -58,7 +58,16 @@ You can download the dataset at [data](https://github.com/KehanGuo2/MolPuzzle/tr
 
 ## Usage Demos
 
-We offer demo examples for tasks in each Stage, the notebook can be found here [Demos](https://github.com/KehanGuo2/MolPuzzle/tree/main/demos)
+1. **Install Required Packages**  
+   Install the necessary Python packages by running:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. **API Key Setup**  
+   - Add API keys for **OpenAI**, **Claude**, and **Gemini** models 
+   - We offer demo examples for tasks in each Stage, the notebook can be found here [Demos](https://github.com/KehanGuo2/MolPuzzle/tree/main/demos)
 
 
 ## 🤗 Contact us
+Kehan Guo: kguo2@nd.edu
