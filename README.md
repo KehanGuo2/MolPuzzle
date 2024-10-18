@@ -8,6 +8,13 @@
 
 </div>
 
+
+
+## 🔥 News
+- 2024.09: 🎉🎉 MolPuzzle has been accepted by NeurIPS 2024 Dataset and Benchmark Track as a spotlight!
+
+
+
 We present MolPuzzle, a benchmark comprising **234** instances of structure elucidation, which feature over **18,000 QA samples** presented in a sequential puzzle-solving process, involving three interlinked subtasks: **molecule understanding**, **spectrum interpretation**, and **molecule construction**.
 
 <div align="center">
@@ -16,8 +23,7 @@ We present MolPuzzle, a benchmark comprising **234** instances of structure eluc
 
 The figure illustrates the problem of molecular structure elucidation alongside its analogical counterpart, the crossword puzzle, highlighting the parallels in strategy and complexity between these two intellectual challenges
 
-## 🔥 News
-- 2024.09: 🎉🎉 MolPuzzle has been accepted by NeurIPS 2024 Dataset and Benchmark Track as a spotlight!
+
 
 
 ## 📊Model Summary
