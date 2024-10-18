@@ -71,8 +71,8 @@ You can download the dataset at [data](https://github.com/KehanGuo2/MolPuzzle/tr
    ```
 
 2. **API Key Setup**  
-   - Add API keys for **OpenAI**, **Claude**, and **Gemini** models 
-   - Example Commands (Stage 2)
+- Add API keys for **OpenAI**, **Claude**, and **Gemini** models 
+- Example Commands (Stage 2)
    - #### Generate Responses for IR Using Multiple Models
       ```bash
             python stage2.py --task IR --action generate_responses --models instructBlip-7B instructBlip-13B llava gpt-4 claude-v1 --iterations 3
