@@ -93,4 +93,4 @@ You can download the dataset at [data](https://github.com/KehanGuo2/MolPuzzle/tr
 
 
 ## ☎️ Contact us
-Kehan Guo: kguo2@nd.edu
+[Kehan Guo](https://kehanguo2.github.io/KehanGuo/): kguo2@nd.edu
