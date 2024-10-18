@@ -27,7 +27,7 @@ The figure illustrates the problem of molecular structure elucidation alongside 
 
 
 
-## 📊Model Summary
+## 📕Model Summary
 
 | Model                | Stage 1 | Stage 2 | Stage 3 |
 |:---------------------|:--------|:--------|:--------|
@@ -56,7 +56,7 @@ The initial molecules were selected by referencing the textbook Organic Structur
 
 You can download the dataset at [data](https://github.com/KehanGuo2/MolPuzzle/tree/main/Data)
 
-## Usage Demos
+## 🔧Usage Demos
 
 1. **Install Required Packages**  
    Install the necessary Python packages by running:
@@ -69,5 +69,5 @@ You can download the dataset at [data](https://github.com/KehanGuo2/MolPuzzle/tr
    - We offer demo examples for tasks in each Stage, the notebook can be found here [Demos](https://github.com/KehanGuo2/MolPuzzle/tree/main/demos)
 
 
-## 🤗 Contact us
+## ☎️ Contact us
 Kehan Guo: kguo2@nd.edu
