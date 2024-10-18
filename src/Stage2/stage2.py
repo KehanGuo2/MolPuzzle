@@ -13,7 +13,6 @@ from transformers import (
     LlavaForConditionalGeneration,
     InstructBlipProcessor,
     InstructBlipForConditionalGeneration,
-    AutoModelForSeq2SeqLM
 )
 from PIL import Image
 import torchvision.transforms as T
@@ -21,6 +20,7 @@ from torchvision.transforms.functional import InterpolationMode
 from sklearn.metrics import accuracy_score, f1_score
 import openai
 import anthropic
+import base64
 
 # Set Cache Directory for Models
 cache_dir = "./cache"
@@ -112,6 +112,28 @@ def generate_mass_questions(input_csv, output_csv):
     results_df.to_csv(output_csv, index=False)
     print(f"MASS questions generated and saved to '{output_csv}'")
 
+def generate_h_nmr_questions(input_csv, output_csv):
+    data = pd.read_csv(input_csv)
+    columns = ["Molecule Index", "SMILES", "cls", "Formula", "Question", "Answer"]
+    results_df = pd.DataFrame(columns=columns)
+
+    # Assuming H-NMR specific questions are generated here
+    # Implement your H-NMR question generation logic
+
+    results_df.to_csv(output_csv, index=False)
+    print(f"H-NMR questions generated and saved to '{output_csv}'")
+
+def generate_c_nmr_questions(input_csv, output_csv):
+    data = pd.read_csv(input_csv)
+    columns = ["Molecule Index", "SMILES", "cls", "Formula", "Question", "Answer"]
+    results_df = pd.DataFrame(columns=columns)
+
+    # Assuming C-NMR specific questions are generated here
+    # Implement your C-NMR question generation logic
+
+    results_df.to_csv(output_csv, index=False)
+    print(f"C-NMR questions generated and saved to '{output_csv}'")
+
 # Data Sampling Function
 def sample_data(input_csv, output_prefix, ratios, total_samples=100, iterations=3):
     data = pd.read_csv(input_csv)
@@ -192,22 +214,11 @@ def analyze_image_with_prompt_llava(model, processor, image_path, prompt_text, s
     return generated_text
 
 def analyze_image_with_prompt_qwen(model, tokenizer, image_path, prompt_text, sys_prompt):
-    image = Image.open(image_path).convert("RGB")
-    prompt = sys_prompt + prompt_text
-    inputs = tokenizer(images=image, text=prompt, return_tensors='pt').to("cuda")
-    outputs = model.generate(
-        **inputs,
-        max_new_tokens=512,
-        num_beams=5,
-        do_sample=True,
-        temperature=0.7,
-    )
-    generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True).strip()
-    return generated_text
+    # Implement Qwen model handler if applicable
+    raise NotImplementedError("Qwen model handler not implemented.")
 
 def analyze_image_with_prompt_internvl(model, tokenizer, image_path, prompt_text, sys_prompt):
-    # Implement the InternVL model handler
-    # This requires specific preprocessing as per InternVL's documentation
+    # Implement InternVL model handler if applicable
     raise NotImplementedError("InternVL model handler not implemented.")
 
 def analyze_image_with_prompt_gpt(model_name, image_path, prompt_text, sys_prompt):
@@ -240,87 +251,6 @@ def analyze_image_with_prompt_claude(model_name, image_path, prompt_text, sys_pr
     generated_text = response['completion'].strip()
     return generated_text
 
-# Generate Responses Function
-def generate_responses(model_names, data_prefix, sys_prompt, iteration=3, model_paths=None, cache_dir="./cache"):
-    for model_name in model_names:
-        print(f"Processing model: {model_name}")
-        model = processor = None
-
-        if is_open_source(model_name):
-            if 'instructBlip' in model_name:
-                model = InstructBlipForConditionalGeneration.from_pretrained(
-                    model_paths[model_name], cache_dir=cache_dir
-                ).to("cuda")
-                processor = InstructBlipProcessor.from_pretrained(
-                    model_paths[model_name], cache_dir=cache_dir
-                )
-            elif 'llava' in model_name:
-                model = LlavaForConditionalGeneration.from_pretrained(
-                    model_paths[model_name],
-                    torch_dtype=torch.float16,
-                    low_cpu_mem_usage=True,
-                    cache_dir=cache_dir
-                ).to("cuda")
-                processor = AutoProcessor.from_pretrained(model_paths[model_name], cache_dir=cache_dir)
-            elif 'Qwen' in model_name:
-                processor = AutoTokenizer.from_pretrained(
-                    model_paths[model_name],
-                    trust_remote_code=True,
-                    cache_dir=cache_dir
-                )
-                model = AutoModelForCausalLM.from_pretrained(
-                    model_paths[model_name],
-                    trust_remote_code=True,
-                    cache_dir=cache_dir
-                ).to("cuda").eval()
-            elif 'InternVL' in model_name:
-                # Implement InternVL model loading
-                raise NotImplementedError("InternVL model loading not implemented.")
-            else:
-                raise ValueError(f"Open-source model '{model_name}' handler not implemented.")
-        else:
-            # For API-based models, no local model loading is required
-            pass
-
-        for i in range(iteration):
-            data_frame = pd.DataFrame(columns=["Question", "cls", "Answer", "Generated Response"])
-            input_csv = f"{data_prefix}_{i}.csv"
-            data = pd.read_csv(input_csv)
-
-            for _, row in data.iterrows():
-                try:
-                    index_parts = row['Molecule Index'].split('_')
-                    index_parts = [part.strip() for part in index_parts]
-                    image_path = f'./data/mol_figures/{index_parts[0]}th_specs/Problem {index_parts[1]}_1.png'  # Adjust the image filename as needed
-
-                    generated_response = analyze_image_with_prompt(
-                        model_name,
-                        image_path,
-                        row['Question'],
-                        sys_prompt=sys_prompt,
-                        model=model,
-                        processor=processor,
-                    )
-                    print(f"Generated Response: {generated_response}")
-                    data_frame.loc[len(data_frame)] = [
-                        row['Question'],
-                        row['cls'],
-                        row['Answer'],
-                        generated_response,
-                    ]
-
-                except Exception as e:
-                    print(f"Error processing row: {e}")
-                    continue
-
-            output_csv = f'./data/mol_figures/step2/{data_prefix}_{model_name}_generated_responses_{i}.csv'
-            data_frame.to_csv(output_csv, index=False)
-            print(f"Generated responses saved to '{output_csv}'")
-
-        # Clean up
-        del model, processor
-        torch.cuda.empty_cache()
-
 # Evaluation Functions
 def evaluate_responses(df, categories):
     results = {}
@@ -347,8 +277,8 @@ def perform_evaluation(models, categories, data_prefix, iteration=3):
         accuracies = {category: [] for category in categories}
 
         for i in range(iteration):
-            input_csv = f'./data/mol_figures/step2/{data_prefix}_{model}_generated_responses_{i}.csv'
-            generated_answers = pd.read_csv(input_csv)
+            input_csv = f'{data_prefix}_{i}.csv'
+            generated_answers = pd.read_csv(f'{data_prefix}_{model}_generated_responses_{i}.csv')
             results = evaluate_responses(generated_answers, categories)
 
             for category in categories:
@@ -409,6 +339,10 @@ Example output: Yes."""
             generate_ir_questions(args.input_csv, args.output_csv)
         elif args.task == 'MASS':
             generate_mass_questions(args.input_csv, args.output_csv)
+        elif args.task == 'H-NMR':
+            generate_h_nmr_questions(args.input_csv, args.output_csv)
+        elif args.task == 'C-NMR':
+            generate_c_nmr_questions(args.input_csv, args.output_csv)
         else:
             print(f"Question generation not implemented for task '{args.task}'")
     elif args.action == 'sample_data':
@@ -426,6 +360,18 @@ Example output: Yes."""
             }
             input_csv = f"{data_dir}MASS_questions.csv"
             output_prefix = f"{data_dir}MASS_sampled_questions_answers"
+        elif args.task == 'H-NMR':
+            ratios = {
+                'H-NMR spectrum structure elucidation': 1,
+            }
+            input_csv = f"{data_dir}H-NMR_questions.csv"
+            output_prefix = f"{data_dir}H-NMR_sampled_questions_answers"
+        elif args.task == 'C-NMR':
+            ratios = {
+                'C-NMR spectrum structure elucidation': 1,
+            }
+            input_csv = f"{data_dir}C-NMR_questions.csv"
+            output_prefix = f"{data_dir}C-NMR_sampled_questions_answers"
         else:
             print(f"Data sampling not implemented for task '{args.task}'")
             return
@@ -436,14 +382,86 @@ Example output: Yes."""
             print("Please provide a list of models using --models")
             return
         data_prefix = f"{data_dir}{args.task}_sampled_questions_answers"
-        generate_responses(
-            model_names=args.models,
-            data_prefix=data_prefix,
-            sys_prompt=sys_prompt,
-            iteration=args.iterations,
-            model_paths=model_paths,
-            cache_dir=cache_dir
-        )
+        sys_prompt = SYS_PROMPTS[args.task]
+        for model_name in args.models:
+            print(f"Processing model: {model_name}")
+            model = processor = None
+
+            if is_open_source(model_name):
+                if 'instructBlip' in model_name:
+                    model = InstructBlipForConditionalGeneration.from_pretrained(
+                        model_paths[model_name], cache_dir=cache_dir
+                    ).to("cuda")
+                    processor = InstructBlipProcessor.from_pretrained(
+                        model_paths[model_name], cache_dir=cache_dir
+                    )
+                elif 'llava' in model_name:
+                    model = LlavaForConditionalGeneration.from_pretrained(
+                        model_paths[model_name],
+                        torch_dtype=torch.float16,
+                        low_cpu_mem_usage=True,
+                        cache_dir=cache_dir
+                    ).to("cuda")
+                    processor = AutoProcessor.from_pretrained(model_paths[model_name], cache_dir=cache_dir)
+                elif 'Qwen' in model_name:
+                    # Implement Qwen model loading if applicable
+                    raise NotImplementedError("Qwen model loading not implemented.")
+                elif 'InternVL' in model_name:
+                    # Implement InternVL model loading if applicable
+                    raise NotImplementedError("InternVL model loading not implemented.")
+                else:
+                    raise ValueError(f"Open-source model '{model_name}' handler not implemented.")
+            else:
+                # For API-based models, no local model loading is required
+                pass
+
+            for i in range(args.iterations):
+                data_frame = pd.DataFrame(columns=["Question", "cls", "Answer", "Generated Response"])
+                input_csv = f'{data_prefix}_{i}.csv'
+                data = pd.read_csv(input_csv)
+
+                for _, row in data.iterrows():
+                    try:
+                        index_parts = row['Molecule Index'].split('_')
+                        index_parts = [part.strip() for part in index_parts]
+                        image_suffix = {
+                            'IR': '_1.png',
+                            'MASS': '_2.png',
+                            'C-NMR': '_3.png',
+                            'H-NMR': '_4.png'
+                        }[args.task]
+                        image_path = f'./data/mol_figures/{index_parts[0]}th_specs/Problem {index_parts[1]}{image_suffix}'
+
+                        generated_response = analyze_image_with_prompt(
+                            model_name,
+                            image_path,
+                            row['Question'],
+                            sys_prompt=sys_prompt,
+                            model=model,
+                            processor=processor,
+                        )
+                        print(f"Generated Response: {generated_response}")
+                        data_frame.loc[len(data_frame)] = [
+                            row['Question'],
+                            row['cls'],
+                            row['Answer'],
+                            generated_response,
+                        ]
+
+                    except Exception as e:
+                        print(f"Error processing row: {e}")
+                        continue
+
+                output_csv = f'{data_prefix}_{model_name}_generated_responses_{i}.csv'
+                data_frame.to_csv(output_csv, index=False)
+                print(f"Generated responses saved to '{output_csv}'")
+
+            # Clean up
+            if model is not None:
+                del model
+            if processor is not None:
+                del processor
+            torch.cuda.empty_cache()
     elif args.action == 'evaluate':
         categories = []
         if args.task == 'IR':
@@ -452,6 +470,12 @@ Example output: Yes."""
         elif args.task == 'MASS':
             categories = ['MASS spectrum structure elucidation']
             data_prefix = f"{data_dir}MASS_sampled_questions_answers"
+        elif args.task == 'H-NMR':
+            categories = ['H-NMR spectrum structure elucidation']
+            data_prefix = f"{data_dir}H-NMR_sampled_questions_answers"
+        elif args.task == 'C-NMR':
+            categories = ['C-NMR spectrum structure elucidation']
+            data_prefix = f"{data_dir}C-NMR_sampled_questions_answers"
         else:
             print(f"Evaluation not implemented for task '{args.task}'")
             return
