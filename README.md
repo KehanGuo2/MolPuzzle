@@ -6,11 +6,17 @@
 
 # MolPuzzle: Can LLMs Solve Molecule Puzzles? A Multimodal Benchmark for Molecular Structure Elucidation
 
+
+[![Website](https://img.shields.io/badge/Website-%F0%9F%8C%8D-blue?style=for-the-badge&logoWidth=40)](https://kehanguo2.github.io/Molpuzzle.io/)
+[![Paper](https://img.shields.io/badge/Paper-%F0%9F%8E%93-lightgrey?style=for-the-badge&logoWidth=40)](https://kehanguo2.github.io/Molpuzzle.io/)
+[![Dataset](https://img.shields.io/badge/Dataset-%F0%9F%92%BE-green?style=for-the-badge&logoWidth=40)](https://kehanguo2.github.io/Molpuzzle.io/)
+
+
 </div>
 
 
 
-## 🔥 News
+## 🔥 Updates & News
 - 2024.09: 🎉🎉 MolPuzzle has been accepted by NeurIPS 2024 Dataset and Benchmark Track as a spotlight!
 
 
