@@ -78,12 +78,12 @@ You can download the dataset at [data](https://github.com/KehanGuo2/MolPuzzle/tr
 
 
 
-### Generate Responses for IR Using Multiple Models
+#### Generate Responses for IR Using Multiple Models
 ```bash
 python stage2.py --task IR --action generate_responses --models instructBlip-7B instructBlip-13B llava gpt-4 claude-v1 --iterations 3
 ```
 
-### Evaluate Responses for IR
+#### Evaluate Responses for IR
 ```bash
 python stage2.py --task IR --action evaluate --models instructBlip-7B instructBlip-13B llava gpt-4 claude-v1 --iterations 3
 ```
