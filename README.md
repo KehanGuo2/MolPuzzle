@@ -3,7 +3,11 @@
 <div align="center">
 
 
-<img src="/Users/kehanguo/PycharmProjects/MolPuzzle/image/MolPuzzle_logo.png" width="100%">
+
+
+
+
+<img src="/image/MolPuzzle_logo2.png" width="100%">
 
 We present MolPuzzle, a benchmark comprising **234** instances of structure elucidation, which feature over **18,000 QA samples** presented in a sequential puzzle-solving process, involving three interlinked subtasks: **molecule understanding**, **spectrum interpretation**, and **molecule construction**.
 
@@ -12,8 +16,32 @@ We present MolPuzzle, a benchmark comprising **234** instances of structure eluc
 
 The figure illustrates the problem of molecular structure elucidation alongside its analogical counterpart, the crossword puzzle, highlighting the parallels in strategy and complexity between these two intellectual challenges
 
+# 🔥 News
+- 2024.09: 🎉🎉 MolPuzzle has been accepted by NeurIPS 2024 Dataset and Benchmark Track as a spotlight!
 
-# 📖Dataset Usage 
+
+# 📊Model Summary
+
+| Model                | Stage 1 | Stage 2 | Stage 3 |
+|:---------------------|:--------|:--------|:--------|
+| GPT-4o               | ✅      | ✅      | ✅      |
+| Claude-3             | ✅      | ❌      | ✅      |
+| Gemini-pro           | ✅      | ❌      | ✅      |
+| GPT-3.5              | ✅      | ❌      | ✅      |
+| Gemini-3-pro-vision  | ❌      | ✅      | ❌      |
+| LLava1.5-8b          | ❌      | ✅      | ❌      |
+| Qwen-VL-Chat         | ❌      | ✅      | ❌      |
+| InstructBLIP-7b      | ❌      | ✅      | ❌      |
+| InstructBLIP-13b     | ❌      | ✅      | ❌      |
+| Llama3-8b            | ✅      | ❌      | ❌      |
+| Vicuna-7b            | ✅      | ❌      | ❌      |
+| Llama2-7b            | ✅      | ❌      | ❌      |
+| Llama2-13b           | ✅      | ❌      | ❌      |
+| Mistral-7b           | ✅      | ❌      | ❌      |
+
+
+
+# 📊Dataset Usage 
 <img width="746" alt="Screenshot 2024-07-11 at 18 19 17" src="https://github.com/user-attachments/assets/1253bda0-c894-47f1-ae35-93864377afbf">
 
 
@@ -27,3 +55,5 @@ You can download the dataset at [data](https://github.com/KehanGuo2/MolPuzzle/tr
 
 We offer demo examples for tasks in each Stage, the notebook can be found here [Demos](https://github.com/KehanGuo2/MolPuzzle/tree/main/demos)
 
+
+# 🤗 Contact us
