@@ -1,0 +1,15 @@
+numpy
+pandas
+torch
+torchvision
+transformers
+Pillow
+scikit-learn
+openai
+anthropic
+fcd
+nltk
+Levenshtein
+rdkit
+pytest
+tabulate

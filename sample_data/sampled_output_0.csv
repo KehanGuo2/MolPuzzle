@@ -1,0 +1,11 @@
+Molecule Index,SMILES,cls,Formula,Question,Answer
+269,C=CCN,Saturation,C3H7N,Could the molecule with the formula C3H7N potentially be Saturated?,No
+138,COC(CC1=CC=CC=C1)OC,Saturation,C10H14O2,Could the molecule with the formula C10H14O2 potentially be Saturated?,No
+96,C1=CC=C(C=C1)CCCBr,Saturation degree,C9H11Br,Calculate the Degree of Unsaturation of the molecule with the formula C9H11Br?,4.0
+12,C1CCC(=O)C1,Saturation degree,C5H8O,Calculate the Degree of Unsaturation of the molecule with the formula C5H8O?,2.0
+152,CC(=O)NC,Aromatic Rings,C3H7NO,Could the molecule with the formula C3H7NO have aromatic rings?,No
+254,C1=CC=C2C(=C1)C(=O)C3=CC=CC=C3C2=O,Aromatic Rings,C14H8O2,Could the molecule with the formula C14H8O2 have aromatic rings?,Yes
+58,C1=CC=C(C(=C1)O)O,Functional Group,C6H6O2,"Could the molecule with the formula C6H6O2 potentially contain a Ether group , given the Degree of Unsaturation is 4.0?",No
+274,CC(=O)N[C@@H](CCC(=O)O)C(=O)O,Functional Group,C7H11NO5,Could the molecule with the formula C7H11NO5 potentially contain a Sulfide?,No
+120,CC(C)(C)C1=CC=C(C=C1)C(=O)OC,Functional Group,C12H16O2,"Could the molecule with the formula C12H16O2 potentially contain a Alcohol group , given the Degree of Unsaturation is 5.0?",No
+251,C1CCC(=NO)CC1,Functional Group,C6H11NO,"Could the molecule with the formula C6H11NO potentially contain a Amine group , given the Degree of Unsaturation is 2.0?",No

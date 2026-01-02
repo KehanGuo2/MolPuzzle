@@ -1,96 +1,121 @@
-<div align="center">
+# MolPuzzle: Spectrum Analysis using LLMs
 
-<img src="/image/MolPuzzle_logo2.png" width="100%">
+![MolPuzzle Logo](image/MolPuzzle_logo.png)
 
+## Overview
 
+MolPuzzle is a comprehensive framework for elucidating molecular structures from spectral data (IR, Mass Spectrometry, H-NMR, C-NMR) using Large Language Models (LLMs). It automates the generation of questions based on spectral features, samples data for evaluation, and benchmarks various models including GPT-4, Claude, and open-source VLM models.
 
-# MolPuzzle: Can LLMs Solve Molecule Puzzles? A Multimodal Benchmark for Molecular Structure Elucidation
+## Features
 
+- **Multi-Modal Analysis**: Supports IR, Mass Spec, H-NMR, and C-NMR spectrum analysis.
+- **Automated Question Generation**: Converts spectral data into natural language QA pairs.
+- **Model Evaluation**: Benchmarks LLM performance on chemical structure elucidation tasks.
+- **Extensible Architecture**: Easy to add new models and datasets.
 
-[![Website](https://img.shields.io/badge/Website-%F0%9F%8C%8D-blue?style=for-the-badge&logoWidth=40)](https://kehanguo2.github.io/Molpuzzle.io/)
-[![Paper](https://img.shields.io/badge/Paper-%F0%9F%8E%93-lightgrey?style=for-the-badge&logoWidth=40)](https://kehanguo2.github.io/Molpuzzle.io/)
-[![Dataset](https://img.shields.io/badge/Dataset-%F0%9F%92%BE-green?style=for-the-badge&logoWidth=40)](https://kehanguo2.github.io/Molpuzzle.io/)
+## Structure
 
+- `src/molpuzzle/`: Core package containing the analysis logic.
+- `notebooks/`: Jupyter notebooks for data conversion and experimental workflows.
+- `Data/`: Dataset containing JSON and image files for spectrum analysis.
+- `sample_data/`: Directory for generated sample data.
 
-</div>
+## Installation
 
+### Prerequisites
 
+- Python 3.8+
+- PyTorch
+- CUDA (optional, for local model inference)
 
-## 🔥 Updates & News
-- 2024.09: 🎉🎉 MolPuzzle has been accepted by NeurIPS 2024 Dataset and Benchmark Track as a spotlight!
+### Steps
 
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/MolPuzzle.git
+   cd MolPuzzle
+   ```
 
-## 💡Overview
-
-We present MolPuzzle, a benchmark comprising **234** instances of structure elucidation, which feature over **18,000 QA samples** presented in a sequential puzzle-solving process, involving three interlinked subtasks: **molecule understanding**, **spectrum interpretation**, and **molecule construction**.
-
-<div align="center">
-<img width="530" alt="Screenshot 2024-07-11 at 17 58 31" src="https://github.com/user-attachments/assets/bbf3fae0-aa8f-4cd5-a274-55a1e42285e9">
-</div>
-
-The figure illustrates the problem of molecular structure elucidation alongside its analogical counterpart, the crossword puzzle, highlighting the parallels in strategy and complexity between these two intellectual challenges
-
-
-
-
-## 📕Model Summary
-
-| Model                | Stage 1 | Stage 2 | Stage 3 |
-|:---------------------|:--------|:--------|:--------|
-| GPT-4o               | ✅      | ✅      | ✅      |
-| Claude-3             | ✅      | ❌      | ✅      |
-| Gemini-pro           | ✅      | ❌      | ✅      |
-| GPT-3.5              | ✅      | ❌      | ✅      |
-| Gemini-3-pro-vision  | ❌      | ✅      | ❌      |
-| LLava1.5-8b          | ❌      | ✅      | ❌      |
-| Qwen-VL-Chat         | ❌      | ✅      | ❌      |
-| InstructBLIP-7b      | ❌      | ✅      | ❌      |
-| InstructBLIP-13b     | ❌      | ✅      | ❌      |
-| Llama3-8b            | ✅      | ❌      | ❌      |
-| Vicuna-7b            | ✅      | ❌      | ❌      |
-| Llama2-7b            | ✅      | ❌      | ❌      |
-| Llama2-13b           | ✅      | ❌      | ❌      |
-| Mistral-7b           | ✅      | ❌      | ❌      |
-
-
-
-## 📊Dataset Statistics
-<img width="746" alt="Screenshot 2024-07-11 at 18 19 17" src="https://github.com/user-attachments/assets/1253bda0-c894-47f1-ae35-93864377afbf">
-
-
-The initial molecules were selected by referencing the textbook Organic Structures from Spectra, 4th Edition, available as an online PDF on ResearchGate. We chose 234 molecules based on spectrum tasks involving IR, MS, 1H-NMR, and 13C-NMR to reflect a difficulty level suitable for graduate students. To address copyright concerns, we excluded molecules with publicly available mass spectrometry (MS) spectra in open-source databases from our study. The remaining spectra were sourced from public resources, notably the PubChem database. For additional spectra that were unavailable, we used simulation methods and provided a Jupyter notebook to generate these data, ensuring high-quality spectra for analysis. 
-
-You can download the dataset at [data](https://github.com/KehanGuo2/MolPuzzle/tree/main/Data)
-
-## 🔧Usage Demos
-
-1. **Install Required Packages**  
-   Install the necessary Python packages by running:
+2. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
+   Or install the package in editable mode:
+   ```bash
+   pip install -e .
+   ```
 
-2. **API Key Setup**  
-- Add API keys for **OpenAI**, **Claude**, and **Gemini** models 
-- Example Commands (Stage 2)
-   - #### Generate Responses for IR Using Multiple Models
-      ```bash
-            python stage2.py --task IR --action generate_responses --models instructBlip-7B instructBlip-13B llava gpt-4 claude-v1 --iterations 3
-      ```
+## Quick Start
 
-   - #### Evaluate Responses for IR
-      ```bash
-            python stage2.py --task IR --action evaluate --models instructBlip-7B instructBlip-13B llava gpt-4 claude-v1 --iterations 3
-      ```
+We provide a quick start script to demonstrate how to load data and perform sampling.
 
+```bash
+python quick_start.py
+```
 
+This script will:
+1. Load sample data from `Data/Stage1.json`.
+2. Convert it to a CSV format suitable for processing.
+3. perform a data sampling session to generate a test set.
 
+## Usage
 
+### 1. Data Sampling
 
+To sample questions from a dataset:
 
+```bash
+python src/molpuzzle/spectrum_analysis.py \
+    --task H-NMR \
+    --action sample_data \
+    --input_csv sample_data/stage1_sample.csv \
+    --output_csv sample_data/sampled_questions.csv
+```
 
+### 2. Generate Responses
 
+To generate responses using a model (e.g., GPT-4):
 
+```bash
+export OPENAI_API_KEY='your_key'
+python src/molpuzzle/spectrum_analysis.py \
+    --task H-NMR \
+    --action generate_responses \
+    --models gpt-4 \
+    --input_csv sample_data/sampled_questions_0.csv
+```
 
-## ☎️ Contact us
-[Kehan Guo](https://kehanguo2.github.io/KehanGuo/): kguo2@nd.edu
+### 3. Evaluation
+
+To evaluate model performance:
+
+```bash
+python src/molpuzzle/spectrum_analysis.py \
+    --task H-NMR \
+    --action evaluate \
+    --models gpt-4 \
+    --input_csv sample_data/sampled_questions_0.csv
+```
+
+## Data Sample
+
+The `Data/` directory contains the core datasets.
+- `Stage1.json`: Basic property questions (Saturation, etc.)
+- `Stage2.json`: Functional group identification.
+- `Stage3.json`: Full structure elucidation.
+
+Example entry from Stage 1:
+```json
+{
+    "Molecule Index": "99",
+    "SMILES": "CCCCC1=CC=CC=C1",
+    "cls": "Saturation",
+    "Formula": "C10H14",
+    "Question": "Could the molecule with the formula C10H14 potentially be Saturated?",
+    "Answer": "No"
+}
+```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
